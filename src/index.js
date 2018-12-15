@@ -2,53 +2,30 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import faker from 'faker';
-// Create a react component for a blog feed comment
+import CommentDetail from './CommentDetail';
+// Create a react component for a blog feed comments
 
 const App = () => {
   return (
     <div className="ui container comments">
-      <div className="comment">
-        <a href="/" className="avatar">
-          <img alt="avatar" src={faker.image.avatar()} />
-        </a>
-        <div className="content">
-          <a href="/" className="author">
-            Matt
-          </a>
-          <div className="metadata">
-            <span className="date">Today at 5:42PM</span>
-          </div>
-          <div className="text">Great blog, how artistic!</div>
-        </div>
-      </div>
-      <div className="comment">
-        <a href="/" className="avatar">
-          <img alt="avatar" src={faker.image.avatar()} />
-        </a>
-        <div className="content">
-          <a href="/" className="author">
-            Matt
-          </a>
-          <div className="metadata">
-            <span className="date">Today at 5:42PM</span>
-          </div>
-          <div className="text">Great blog, how artistic!</div>
-        </div>
-      </div>
-      <div className="comment">
-        <a href="/" className="avatar">
-          <img alt="avatar" src={faker.image.avatar()} />
-        </a>
-        <div className="content">
-          <a href="/" className="author">
-            Matt
-          </a>
-          <div className="metadata">
-            <span className="date">Today at 5:42PM</span>
-          </div>
-          <div className="text">Great blog, how artistic!</div>
-        </div>
-      </div>
+      <CommentDetail
+        author="Sam"
+        timeAgo="Today at 4:45pm"
+        comments="Great blog post!"
+        avatar={faker.image.avatar()}
+      />
+      <CommentDetail
+        author="Alex"
+        timeAgo="Today at 9:45am"
+        comments="Awesome post, thanks!"
+        avatar={faker.image.avatar()}
+      />
+      <CommentDetail
+        author="Jane"
+        timeAgo="Yesterday at 7:45pm"
+        comments="Well done, the best blog post!"
+        avatar={faker.image.avatar()}
+      />
     </div>
   );
 };

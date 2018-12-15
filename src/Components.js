@@ -1,1 +1,0 @@
-// Make first Blog List Component, with image, name and date.
