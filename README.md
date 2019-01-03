@@ -245,3 +245,54 @@ This  is the very first function that is called in the instance that it's create
 1.Easier code organization,
 2.Can use 'state' (another React system),
 3.Understands lifecycle events, 4.Easier to handle user imput, 5.Easier to do things when th app first starts.
+
+# Rendering a List 
+### Taking a string and mapping to an JSX expression
+
+```
+ state = {
+    count: 0,
+    tags: ['tags1', 'tags2', 'tags3']
+  };
+
+return (
+      <ul>
+        {this.state.tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+```
+
+# Conditionally Render Content Using the Logical Operator &&
+First the condition, then operator and last text or JSX
+```
+render() {
+  return (
+    <div>
+       {this.state.tags.length === 0 && "Please create a new tag!"}
+    </div>
+  )
+}
+```
+
+# Handle Events
+```
+handleIncrement() {
+  console.log('Increament was clicked!')
+}
+
+  render() {
+    return (
+      <div>
+        <button 
+        onClick={this.handleIncrement} 
+        className="btn btn-secondary btn-sm">
+        Increment
+        </button> 
+        {this.state.tags.length === 0 && "Please create a new tag!"}
+      </div>
+    );
+  }
+
+```
