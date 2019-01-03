@@ -89,9 +89,11 @@ Make components that can be easily reused through out the application.
 
 Indentify the duplication, what's its purpose?, choose a decriptive name!, Create a new file to house the new component and configure by using React's "props" system.
 
-## Props
+# Props
 
-System for passing data from a parent component to a child component (customize how the child looks or behaves).
+System for passing data from a parent component to a child component 
+#### Every React component has a property called props (a plain JS Object) includes all attributes
+(customize how the child looks or behaves).
 
 The Component using props (JavaScript objects) key value pairs
 
@@ -197,12 +199,13 @@ ReactDom.render(<App />, document.querySelector('#root'));
 Configure a component when its created.
 
 ## Understanding 'state'
+
 Only usable with class components,
-   You will confuse props with this.state,
-   'state' is a JS object that contains data relevant to a component,
-   Updating 'state' on a component causes the component to (almost) instantly rerender,
-   'state' must be initialized when a component is created (constructor), 
-   'state' can ONLY be updated using the function 'setState'
+You will confuse props with this.state,
+'state' is a JS object that contains data relevant to a component,
+Updating 'state' on a component causes the component to (almost) instantly rerender,
+'state' must be initialized when a component is created (constructor),
+'state' can ONLY be updated using the function 'setState'
 
 ## Class Components
 
@@ -227,26 +230,35 @@ componentDidMount() {
 ```
 
 # Component Lifecycle
-### JS constructor()  // good place to do one-time set up
-This  is the very first function that is called in the instance that it's created.
+
+### JS constructor() // good place to do one-time set up
+
+This is the very first function that is called in the instance that it's created.
 
 ### render() // Avoid doing anything besides returning JSX.
 
 # Lifecylce Methods
-## componentDidMount()  
+
+## componentDidMount()
+
 // loads one time, place to do data-loading!
-## componentDidUpdate()  
- // loads when the component updates, place to do more data-loading when state/props change.
-## componentWillMount() 
+
+## componentDidUpdate()
+
+// loads when the component updates, place to do more data-loading when state/props change.
+
+## componentWillMount()
+
 // place to cleanup (especially no-React stuff)
 
-
 ### Benefits:
+
 1.Easier code organization,
 2.Can use 'state' (another React system),
 3.Understands lifecycle events, 4.Easier to handle user imput, 5.Easier to do things when th app first starts.
 
-# Rendering a List 
+# Rendering a List
+
 ### Taking a string and mapping to an JSX expression
 
 ```
@@ -265,7 +277,9 @@ return (
 ```
 
 # Conditionally Render Content Using the Logical Operator &&
+
 First the condition, then operator and last text or JSX
+
 ```
 render() {
   return (
@@ -277,6 +291,9 @@ render() {
 ```
 
 # Handle Events
+
+Passing an expression through the method
+
 ```
 handleIncrement() {
   console.log('Increament was clicked!')
@@ -285,14 +302,42 @@ handleIncrement() {
   render() {
     return (
       <div>
-        <button 
-        onClick={this.handleIncrement} 
+        <button
+        onClick={this.handleIncrement}
         className="btn btn-secondary btn-sm">
         Increment
-        </button> 
+        </button>
         {this.state.tags.length === 0 && "Please create a new tag!"}
       </div>
     );
   }
 
 ```
+
+# Access 'this' as undefined
+
+Convert to the arrow function to bind event handlers.
+
+```
+// this.state.count // returns undefined
+ handleIncrements() {
+    console.log('Increment was clicked!', this.state.count);
+  };
+
+  // Change to the arrow function
+  handleIncrements = () => {
+    console.log('Increment was clicked!', this.state.count);
+  };
+```
+
+# Updating state = { } with setState()
+
+Up-dating the state, in the argumet set the property object and its value
+
+```
+handleIncrements = () => {
+   this.setState({ count: this.state.count + 1 });
+ // get the current count, increment it and set it
+  };
+```
+# Passing Event Arguments
